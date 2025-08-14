@@ -1,0 +1,184 @@
+/* 
+  Estilos para el proyecto de tesis: Expansión Urbana y Pobreza
+  Diseño limpio, profesional y adaptable para GitHub Pages.
+*/
+
+/* 1. Reset básico para eliminar márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Estilos generales del cuerpo */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* 3. Cabecera principal (header) */
+.header {
+  background: linear-gradient(135deg, #1a3a5f, #2c5c8a);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* 4. Barra de navegación (navbar) */
+.navbar {
+  background-color: #0d2b4f;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap; /* Para móviles */
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #1a3a5f;
+}
+
+.nav-link.active {
+  background-color: #3498db;
+  font-weight: bold;
+}
+
+/* 5. Contenido principal */
+.main-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+/* 6. Sección de introducción */
+.intro-section {
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.intro-section h2 {
+  color: #1a3a5f;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+.intro-section p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* 7. Estilos para cajas de visualización */
+.visualization-box {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.visualization-box h3 {
+  color: #2c5c8a;
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.visualization-box p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* 8. Espacio simulado para gráficos o mapas */
+.viz-placeholder {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(45deg, #f0f4f8, #d9e2ec);
+  border: 2px dashed #3498db;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #3498db;
+  margin: 1rem 0;
+}
+
+/* 9. Leyenda o fuente de la visualización */
+.viz-caption {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+  text-align: right;
+}
+
+/* 10. Pie de página */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #1a3a5f;
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+/* 11. Responsive: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .main-content {
+    padding: 0 1rem;
+  }
+
+  .intro-section h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* 12. Animaciones suaves al pasar el mouse sobre las visualizaciones */
+.visualization-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
