@@ -74,7 +74,7 @@ body {
 .main-content {
   max-width: 1600px;
   margin: 2rem auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 /* 6. Sección de introducción */
@@ -178,16 +178,15 @@ body {
 
 /* 12. Animaciones suaves al pasar el mouse sobre las visualizaciones */
 .visualization-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 /* Estilo para el iframe del visor */
 .map-iframe {
   width: 100%;
-  height: 90vh; /* 80% de la altura de la ventana */
+  height: 100vh; /* 80% de la altura de la ventana */
   border: none;
   border-radius: 1px;
   box-shadow: 0 4px 1px rgba(0, 0, 0, 0.1);
-} 
+}
