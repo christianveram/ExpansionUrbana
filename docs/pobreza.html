@@ -57,19 +57,22 @@
     </div>
 
 <!-- Script para ajustar altura de todos los iframes -->
-  <script>
-    // Seleccionamos todos los iframes con la clase "map-iframe"
-    const iframes = document.querySelectorAll(".map-iframe");
-
-    // Recorremos cada iframe y le añadimos un evento al cargar
-    iframes.forEach(iframe => {
-      iframe.onload = () => {
-        // Ajustamos la altura del iframe al contenido interno
-        // documentElement.scrollHeight toma la altura total del contenido dentro del iframe
+<script>
+  const iframes = document.querySelectorAll(".map-iframe");
+  iframes.forEach(iframe => {
+    iframe.onload = () => {
+      try {
+        // Solo intentamos ajustar si es del mismo origen
         iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-      };
-    });
-  </script>
+      } catch (e) {
+        // Si no se puede (iframe externo), usamos altura fija
+        iframe.style.height = "80vh"; // ajusta según necesites
+      }
+    };
+    // Altura inicial para que sea visible antes de cargar
+    iframe.style.height = "50vh";
+  });
+</script>
     
   </main>
 
