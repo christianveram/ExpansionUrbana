@@ -29,16 +29,15 @@
   <!-- Contenido principal -->
   <main class="main-content">
 
-    <!-- Sección de Introducción -->
     <section class="intro-section">
-      <h2>Población en condición de pobreza 2014,2017 y 2021 </h2>
+      <h2>Población en condición de pobreza 2014, 2017 y 2021</h2>
     </section>
 
     <!-- Iframe local: comparativo por UPZ y localidad -->
     <div class="visualization-box">
       <iframe 
         class="map-iframe"
-        src="https://christianveram.github.io/ExpansionUrbana/comparativo_pobreza_upz_localidad.html"
+        src="comparativo_pobreza_upz_localidad.html"
         style="width:100%; border:none;">
       </iframe>
       <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
@@ -48,7 +47,7 @@
     <div class="visualization-box">
       <iframe 
         class="map-iframe"
-        src="https://christianveram.github.io/ExpansionUrbana/grafica_barras_pobreza.html"
+        src="grafica_barras_pobreza.html"
         style="width:100%; border:none;">
       </iframe>
       <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
@@ -66,22 +65,30 @@
 
   </main>
 
-  <!-- Script para ajustar altura de iframes locales -->
+  <!-- Script para ajustar altura dinámicamente -->
   <script>
     const iframes = document.querySelectorAll(".map-iframe");
+
     iframes.forEach(iframe => {
-      // Altura inicial visible antes de que cargue
+      // Altura inicial para que se vea mientras carga
       iframe.style.height = "50vh";
 
-      iframe.onload = () => {
+      // Función que intenta ajustar altura dinámicamente
+      const ajustarAltura = () => {
         try {
-          // Intentamos ajustar automáticamente solo si es del mismo dominio
+          // Para iframes locales en el mismo dominio
           iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-        } catch (e) {
-          // Si no se puede acceder (iframe externo), dejamos la altura fija
+        } catch(e) {
+          // Para iframes externos (GEE) dejamos altura fija
           iframe.style.height = "80vh";
         }
       };
+
+      // Ajusta al cargar
+      iframe.addEventListener("load", ajustarAltura);
+
+      // Ajuste periódico: útil si el contenido cambia dinámicamente (Plotly, D3, etc.)
+      setInterval(ajustarAltura, 500); // cada 0.5 segundos
     });
   </script>
 
@@ -92,3 +99,4 @@
 
 </body>
 </html>
+
