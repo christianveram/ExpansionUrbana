@@ -18,7 +18,6 @@
   <!-- Navegación principal -->
   <nav class="navbar">
     <ul class="nav-list">
-      <!-- Enlaces a distintas secciones o páginas -->
       <li><a href="index.html" class="nav-link">Inicio</a></li>
       <li><a href="clasificacion.html" class="nav-link">Clasificación</a></li>
       <li><a href="pobreza.html" class="nav-link active">Pobreza</a></li>
@@ -35,46 +34,56 @@
       <h2>Población en condición de pobreza 2014,2017 y 2021 </h2>
     </section>
 
-
-    <!-- Primer iframe: comparativo por UPZ y localidad -->
+    <!-- Iframe local: comparativo por UPZ y localidad -->
     <div class="visualization-box">
       <iframe 
-        class="map-iframe"  <!-- Usamos clase en lugar de id -->
-        src="comparativo_pobreza_upz_localidad.html"
+        class="map-iframe"
+        src="https://christianveram.github.io/ExpansionUrbana/comparativo_pobreza_upz_localidad.html"
         style="width:100%; border:none;">
       </iframe>
       <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
     </div>
 
-    <!-- Segundo iframe: gráfica de barras -->
+    <!-- Iframe local: gráfica de barras -->
     <div class="visualization-box">
       <iframe 
-        class="map-iframe"  <!-- Igual, solo clase -->
-        src="grafica_barras_pobreza.html"
+        class="map-iframe"
+        src="https://christianveram.github.io/ExpansionUrbana/grafica_barras_pobreza.html"
         style="width:100%; border:none;">
       </iframe>
       <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
     </div>
 
-<!-- Script para ajustar altura de todos los iframes -->
-<script>
-  const iframes = document.querySelectorAll(".map-iframe");
-  iframes.forEach(iframe => {
-    iframe.onload = () => {
-      try {
-        // Solo intentamos ajustar si es del mismo origen
-        iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-      } catch (e) {
-        // Si no se puede (iframe externo), usamos altura fija
-        iframe.style.height = "80vh"; // ajusta según necesites
-      }
-    };
-    // Altura inicial para que sea visible antes de cargar
-    iframe.style.height = "50vh";
-  });
-</script>
-    
+    <!-- Iframe externo: Google Earth Engine -->
+    <div class="visualization-box">
+      <iframe 
+        class="map-iframe"
+        src="https://ee-cveram.projects.earthengine.app/view/expansionurbanapobreza"
+        style="width:100%; border:none; height:80vh;">
+      </iframe>
+      <p class="viz-caption">Fuente: Google Earth Engine</p>
+    </div>
+
   </main>
+
+  <!-- Script para ajustar altura de iframes locales -->
+  <script>
+    const iframes = document.querySelectorAll(".map-iframe");
+    iframes.forEach(iframe => {
+      // Altura inicial visible antes de que cargue
+      iframe.style.height = "50vh";
+
+      iframe.onload = () => {
+        try {
+          // Intentamos ajustar automáticamente solo si es del mismo dominio
+          iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+        } catch (e) {
+          // Si no se puede acceder (iframe externo), dejamos la altura fija
+          iframe.style.height = "80vh";
+        }
+      };
+    });
+  </script>
 
   <!-- Pie de página -->
   <footer class="footer">
