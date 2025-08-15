@@ -38,13 +38,30 @@
 
 
 <div class="visualization-box">
-  <iframe class="map-iframe" src="https://ee-cveram.projects.earthengine.app/view/expansionurbanapobreza"></iframe>
+  <iframe 
+    class="map-iframe" 
+    src="https://ee-cveram.projects.earthengine.app/view/expansionurbanapobreza"
+    style="width:100%; height:80vh; border:none;">
+  </iframe>
   <p class="viz-caption">Fuente: Google Earth Engine</p>
 </div>
     
 
-
   </main>
+
+  <script>
+    // Seleccionamos todos los iframes con la clase "map-iframe"
+    const iframes = document.querySelectorAll(".map-iframe");
+    // Recorremos cada iframe y le añadimos un evento al cargar
+    iframes.forEach(iframe => {
+      iframe.onload = () => {
+        // Ajustamos la altura del iframe al contenido interno
+        // documentElement.scrollHeight toma la altura total del contenido dentro del iframe
+        iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+      };
+    });
+  </script>
+  
 
   <!-- Pie de página -->
   <footer class="footer">
