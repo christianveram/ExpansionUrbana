@@ -36,29 +36,40 @@
     </section>
 
 
-<div class="visualization-box">
-  <iframe class="map-iframe" src="https://christianveram.github.io/ExpansionUrbana/comparativo_pobreza_upz_localidad.html"></iframe>
-  <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
-</div>
+    <!-- Primer iframe: comparativo por UPZ y localidad -->
+    <div class="visualization-box">
+      <iframe 
+        class="map-iframe"  <!-- Usamos clase en lugar de id -->
+        src="comparativo_pobreza_upz_localidad.html"
+        style="width:100%; border:none;">
+      </iframe>
+      <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
+    </div>
 
+    <!-- Segundo iframe: gráfica de barras -->
+    <div class="visualization-box">
+      <iframe 
+        class="map-iframe"  <!-- Igual, solo clase -->
+        src="grafica_barras_pobreza.html"
+        style="width:100%; border:none;">
+      </iframe>
+      <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
+    </div>
 
-<div class="visualization-box">
-  <iframe 
-    id="map-iframe"
-    class="map-iframe" 
-    src="grafica_barras_pobreza.html" 
-    style="width:100%; border:none;">
-  </iframe>
-  <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
-</div>
+<!-- Script para ajustar altura de todos los iframes -->
+  <script>
+    // Seleccionamos todos los iframes con la clase "map-iframe"
+    const iframes = document.querySelectorAll(".map-iframe");
 
-<script>
-  const iframe = document.getElementById("map-iframe");
-  // Ajustar la altura al cargar
-  iframe.onload = function() {
-    iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-  };
-</script>
+    // Recorremos cada iframe y le añadimos un evento al cargar
+    iframes.forEach(iframe => {
+      iframe.onload = () => {
+        // Ajustamos la altura del iframe al contenido interno
+        // documentElement.scrollHeight toma la altura total del contenido dentro del iframe
+        iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+      };
+    });
+  </script>
     
   </main>
 
