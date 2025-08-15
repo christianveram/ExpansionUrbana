@@ -58,11 +58,18 @@
 
   <!-- Script para ajustar altura dinámicamente -->
 <script>
-  const iframe = document.getElementById("map-iframe");
-  // Ajustar la altura al cargar
-  iframe.onload = function() {
-    iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-  };
+  // Seleccionamos todos los iframes con clase "map-iframe"
+  const iframes = document.querySelectorAll(".map-iframe");
+
+  iframes.forEach(iframe => {
+    // Altura inicial visible mientras carga
+    iframe.style.height = "50vh";
+
+    // Ajusta altura al cargar
+    iframe.onload = function() {
+      iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+    };
+  });
 </script>
 
   <!-- Pie de página -->
