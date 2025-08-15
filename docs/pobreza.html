@@ -66,31 +66,13 @@
   </main>
 
   <!-- Script para ajustar altura dinámicamente -->
-  <script>
-    const iframes = document.querySelectorAll(".map-iframe");
-
-    iframes.forEach(iframe => {
-      // Altura inicial para que se vea mientras carga
-      iframe.style.height = "50vh";
-
-      // Función que intenta ajustar altura dinámicamente
-      const ajustarAltura = () => {
-        try {
-          // Para iframes locales en el mismo dominio
-          iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-        } catch(e) {
-          // Para iframes externos (GEE) dejamos altura fija
-          iframe.style.height = "80vh";
-        }
-      };
-
-      // Ajusta al cargar
-      iframe.addEventListener("load", ajustarAltura);
-
-      // Ajuste periódico: útil si el contenido cambia dinámicamente (Plotly, D3, etc.)
-      setInterval(ajustarAltura, 500); // cada 0.5 segundos
-    });
-  </script>
+<script>
+  const iframe = document.getElementById("map-iframe");
+  // Ajustar la altura al cargar
+  iframe.onload = function() {
+    iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+  };
+</script>
 
   <!-- Pie de página -->
   <footer class="footer">
