@@ -120,9 +120,12 @@ body {
   background: #fff;
   border-radius: 6px;
   border: 1px solid #e2e2e2;
-  padding: 1.3rem;
   margin-bottom: 2rem;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  padding: 0;           /* sin padding, para que el iframe ocupe 100% */
+  overflow: hidden;
+  height: 80vh;         /* 🔹 controla el alto relativo a la pantalla */
+  max-height: 900px;    /* 🔹 opcional: no crecer más de cierto límite */
+  min-height: 500px;    /* 🔹 opcional: no bajar de un mínimo */
 }
 
 .visualization-box h3 {
