@@ -59,34 +59,17 @@
   <!-- Script para ajustar altura dinámicamente -->
 <!-- Script para ajustar altura dinámicamente -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const iframes = document.querySelectorAll(".map-iframe");
+  function resizeIframe() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ 
+      type: "resize-iframe", 
+      src: window.location.pathname.split("/").pop(),
+      height: height 
+    }, "*");
+  }
 
-  iframes.forEach(iframe => {
-    iframe.onload = function () {
-      setTimeout(() => {
-        try {
-          // Verificar si se puede acceder al documento (mismo dominio)
-          const doc = iframe.contentWindow.document;
-          const scrollHeight = doc.documentElement.scrollHeight;
-          
-          // Ajustar altura dinámica
-          iframe.style.height = Math.max(scrollHeight, 500) + "px";
-          console.log(`Iframe ajustado a ${scrollHeight}px`);
-        } catch (err) {
-          // Caso cross-origin (ej. GEE): dejamos el aspecto por CSS
-          console.warn("Cross-origin detectado, se usa aspect-ratio CSS en:", iframe.src);
-          iframe.style.height = ""; // usa solo el aspect-ratio definido en CSS
-        }
-      }, 800); // tiempo de espera para que carguen gráficos
-    };
-
-    iframe.onerror = function () {
-      console.error("Error al cargar iframe:", iframe.src);
-      iframe.style.height = "600px"; // fallback fijo
-    };
-  });
-});
+  window.onload = resizeIframe;
+  window.onresize = resizeIframe;
 </script>
   
   <!-- Pie de página -->
