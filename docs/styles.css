@@ -118,7 +118,7 @@ body {
 /* 7. Caja de visualización */
 .visualization-box {
   background: #fff;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 1px solid #e2e2e2;
   padding: 1.3rem;
   margin-bottom: 2rem;
@@ -134,7 +134,7 @@ body {
 
 .visualization-box:hover {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 /* 8. Pie de visualización */
@@ -161,12 +161,12 @@ body {
 
 .map-iframe {
   width: 100%;
-  aspect-ratio: 16 / 9;  /* relación estilo video */
-  min-height: 400px;     /* por si la pantalla es muy estrecha */
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  background: #f7f9fb;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+  height: 50vh;
+  min-height: 600px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: #f0f4f8;
 }
 
 /* 11. Responsive */
