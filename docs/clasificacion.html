@@ -58,7 +58,21 @@
   </main>
 
 <!-- Script para ajustar altura dinámicamente -->
+<script>
+  function resizeIframe() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ 
+      type: "resize-iframe", 
+      src: window.location.pathname.split("/").pop(),
+      height: height 
+    }, "*");
+  }
 
+  window.onload = resizeIframe;
+  window.onresize = resizeIframe;
+</script>
+
+  
 
   <!-- Pie de página -->
   <footer class="footer">
