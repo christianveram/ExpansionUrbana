@@ -1,192 +1,197 @@
 /* 
-  Estilos para el proyecto de tesis: Expansión Urbana y Pobreza
-  Diseño limpio, profesional y adaptable para GitHub Pages.
+  Estilos elegantes para: Tesis - Expansión Urbana y Pobreza
+  Paleta: Azul petróleo (#1c2a35) + Azul acero (#4a637d)
 */
 
-/* 1. Reset básico para eliminar márgenes y paddings por defecto */
+/* 1. Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 2. Estilos generales del cuerpo */
+/* 2. Cuerpo */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Lato', 'Segoe UI', sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
+  color: #2d2d2d;
+  background-color: #fafafa;
 }
 
-/* 3. Cabecera principal (header) */
+/* 3. Cabecera principal */
 .header {
-  background: linear-gradient(135deg, #1a3a5f, #2c5c8a);
-  color: white;
+  background: #1c2a35; /* Azul petróleo */
+  color: #fff;
   text-align: center;
-  padding: 2rem 1rem;
-  margin-bottom: 1rem;
+  padding: 1rem 1rem;
+  margin-bottom: ;
+  border-bottom: 3px solid #4a637d; /* Azul acero */
 }
 
 .header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  margin-bottom: 0.1rem;
+  font-weight: 700;
 }
 
 .header p {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  font-style: italic;
 }
 
-/* 4. Barra de navegación (navbar) */
+/* 4. Barra de navegación */
 .navbar {
-  background-color: #0d2b4f;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  padding: 0.6rem 0;
 }
 
 .nav-list {
   display: flex;
   justify-content: center;
   list-style: none;
-  flex-wrap: wrap; /* Para móviles */
+  gap: 0.5rem;
 }
 
 .nav-link {
-  color: white;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #1c2a35;       /* Azul petróleo */
+  color: #fff;
+  border-radius: 6px;
   text-decoration: none;
-  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
+/* Hover */
 .nav-link:hover {
-  background-color: #1a3a5f;
+  background: #4a637d;       /* Azul acero */
+  color: #fff;
+  border: 1px solid #4a637d;
 }
 
+/* Activo */
 .nav-link.active {
-  background-color: #3498db;
-  font-weight: bold;
+  background: #4a637d;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #4a637d;
 }
 
-/* 5. Contenido principal */
+/* 5. Contenido */
 .main-content {
-  max-width: 1600px;
-  margin: 2rem auto;
+  max-width: 1200px;
+  margin: 1.5rem auto;
   padding: 0 1rem;
 }
 
 /* 6. Sección de introducción */
 .intro-section {
-  margin-bottom: 3rem;
-  line-height: 1.8;
+  margin-bottom: 2rem;
 }
 
 .intro-section h2 {
-  color: #1a3a5f;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 0.3rem;
-  display: inline-block;
+  color: #1c2a35;
+  margin-bottom: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-left: 4px solid #4a637d; /* Azul acero */
+  padding-left: 0.6rem;
 }
 
 .intro-section p {
   margin-bottom: 1rem;
   text-align: justify;
+  color: #444;
+  font-size: 1rem;
 }
 
-/* 7. Estilos para cajas de visualización */
+/* 7. Caja de visualización */
 .visualization-box {
-  background: white;
+  background: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  border: 1px solid #e2e2e2;
+  padding: 1.3rem;
   margin-bottom: 2rem;
-  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .visualization-box h3 {
-  color: #2c5c8a;
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
-}
-
-.visualization-box p {
-  margin-bottom: 1rem;
-  color: #555;
-}
-
-/* 8. Espacio simulado para gráficos o mapas */
-.viz-placeholder {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(45deg, #f0f4f8, #d9e2ec);
-  border: 2px dashed #3498db;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #4a637d; /* Azul acero */
+  margin-bottom: 0.6rem;
   font-size: 1.2rem;
-  color: #3498db;
-  margin: 1rem 0;
+  font-weight: 600;
 }
 
-/* 9. Leyenda o fuente de la visualización */
+.visualization-box:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* 8. Pie de visualización */
 .viz-caption {
-  font-size: 0.9rem;
-  color: #777;
+  font-size: 0.85rem;
+  color: #666;
   font-style: italic;
   text-align: right;
+  margin-top: 0.5rem;
 }
 
-/* 10. Pie de página */
+/* 9. Pie de página */
 .footer {
   text-align: center;
-  padding: 1.5rem;
-  background-color: #1a3a5f;
+  padding: 1rem;
+  background: #1c2a35; /* Azul petróleo */
   color: white;
   font-size: 0.9rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  border-top: 3px solid #4a637d; /* Azul acero */
 }
 
-/* 11. Responsive: Ajustes para pantallas pequeñas */
+/* 10. Iframe */
+.map-iframe {
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f7f7f7;
+}
+
+/* 11. Responsive */
 @media (max-width: 768px) {
   .header h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
+  }
+
+  .header p {
+    font-size: 0.8rem;
   }
 
   .nav-list {
-    flex-direction: column;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 
   .nav-link {
-    padding: 0.8rem;
-    font-size: 1rem;
-  }
-
-  .main-content {
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
   }
 
   .intro-section h2 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
-}
 
-/* 12. Animaciones suaves al pasar el mouse sobre las visualizaciones */
-.visualization-box:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-
-/* Estilo para el iframe del visor */
-.map-iframe {
-  width: 100%;
-  height: 100vh; /* 80% de la altura de la ventana */
-  border: none;
-  border-radius: 1px;
-  box-shadow: 0 4px 1px rgba(0, 0, 0, 0.1);
+  .visualization-box {
+    padding: 1rem;
+  }
 }
