@@ -164,13 +164,21 @@ body {
 
 .map-iframe {
   width: 100%;
-  height: 50vh;
-  min-height: 600px;
+  height: 100%;       /* ocupa todo el contenedor */
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: #f0f4f8;
+  display: block;
 }
+
+
+/* Contenedor para iframes externos */
+.visualization-box.external {
+  height: 900px;      /* altura fija */
+  max-height: 90vh;   /* opcional: no más alto que 80% de la pantalla */
+  min-height: 400px;  /* opcional: mínimo visible */
+  padding: 0;
+  overflow: hidden;
+}
+
 
 /* 11. Responsive */
 @media (max-width: 768px) {
