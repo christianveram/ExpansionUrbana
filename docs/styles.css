@@ -89,9 +89,9 @@ body {
 
 /* 5. Contenido */
 .main-content {
-  max-width: 1800px;
-  margin: 1.2rem auto;
-  padding: 0 1rem;
+  width: 85%;          /* Ocupa el 90% del ancho disponible */
+  margin: 2rem auto;   /* Centrado con márgenes */
+  padding: 0 1.2rem;   /* Un poco de aire a los lados */
 }
 
 /* 6. Sección de introducción */
