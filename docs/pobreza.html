@@ -57,18 +57,36 @@
   </main>
 
   <!-- Script para ajustar altura dinámicamente -->
+<!-- Script para ajustar altura dinámicamente -->
 <script>
-  // Seleccionamos todos los iframes con clase "map-iframe"
-  const iframes = document.querySelectorAll(".map-iframe");
+  document.addEventListener("DOMContentLoaded", function () {
+    const iframes = document.querySelectorAll(".map-iframe");
 
-  iframes.forEach(iframe => {
-    // Altura inicial visible mientras carga
-    iframe.style.height = "50vh";
+    iframes.forEach(iframe => {
+      // Altura temporal mientras carga
+      iframe.style.height = "50vh";
 
-    // Ajusta altura al cargar
-    iframe.onload = function() {
-      iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
-    };
+      // Cuando el iframe termina de cargar el HTML
+      iframe.onload = function () {
+        // Esperamos un momento para que los gráficos (Chart.js, etc.) se rendericen
+        setTimeout(() => {
+          try {
+            const doc = iframe.contentWindow.document;
+            const scrollHeight = doc.documentElement.scrollHeight;
+            iframe.style.height = scrollHeight + "px";
+            console.log(`Iframe ${iframe.src} ajustado a ${scrollHeight}px`);
+          } catch (err) {
+            console.warn("No se pudo acceder al contenido del iframe (¿cross-origin?)", err);
+          }
+        }, 400); // ⏱️ Ajusta este valor si el gráfico tarda más
+      };
+
+      // Manejo básico de errores
+      iframe.onerror = function () {
+        console.error("Error al cargar iframe:", iframe.src);
+        iframe.style.height = "600px"; // altura por defecto
+      };
+    });
   });
 </script>
 
