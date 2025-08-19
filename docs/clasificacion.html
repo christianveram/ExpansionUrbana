@@ -58,15 +58,32 @@
 
 <!-- Script para ajustar altura dinámicamente -->
 <script>
-window.addEventListener("message", (event) => {
-  if (event.data.type === "resize-iframe") {
-    const iframe = document.querySelector(`iframe[src="${event.data.src}"]`);
-    if (iframe) {
-      iframe.style.height = event.data.height + "px";
-    }
-  }
-});
+  window.addEventListener("load", function () {
+    const iframes = document.querySelectorAll(".map-iframe");
+
+    iframes.forEach((iframe) => {
+      iframe.onload = function () {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          const contentHeight = doc.body.scrollHeight;
+
+          // Ajustar iframe y contenedor
+          iframe.style.height = contentHeight + "px";
+          const box = iframe.closest(".visualization-box");
+          if (box) box.style.height = contentHeight + "px";
+
+        } catch (e) {
+          console.warn("No se pudo acceder al contenido del iframe (¿mismo origen?).", e);
+        }
+      };
+      // Si el iframe ya está cargado (caché), ejecuta onload manualmente
+      if (iframe.contentDocument.body) {
+        iframe.onload();
+      }
+    });
+  });
 </script>
+  
   
 
   <!-- Pie de página -->
