@@ -183,8 +183,7 @@ body {
   padding: 0;
   overflow: hidden;
   width: 100%;          /* ocupa todo el ancho del contenedor */
-  max-width: 1000px;    /* opcional: limitar ancho */
-  height: 600px;        /* altura fija */
+  height: 800px;        /* altura fija */
   position: relative;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
