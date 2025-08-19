@@ -171,3 +171,30 @@ body {
     margin-right: 0.5rem;
   }
 }
+
+
+
+/* Caja para Google Earth Engine */
+.visualization-box-fixed {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+  margin-bottom: 2rem;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;          /* ocupa todo el ancho del contenedor */
+  max-width: 1000px;    /* opcional: limitar ancho */
+  height: 600px;        /* altura fija */
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.map-iframe-fixed {
+  width: 100%;
+  height: 100%;   /* ocupa todo el alto definido en la caja */
+  border: none;
+  display: block;
+}
+
+
+
