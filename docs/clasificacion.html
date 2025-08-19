@@ -58,27 +58,20 @@
 
   
 <script>
-  // Selecciona todos los iframes con la clase map-iframe
-  const iframes = document.querySelectorAll('.map-iframe');
-
-  iframes.forEach(iframe => {
-    // Función para ajustar la altura según contenido del iframe
-    function ajustarAltura() {
-      try {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        if (iframeDoc) {
-          const altura = iframeDoc.body.scrollHeight;
-          iframe.style.height = altura + 'px';
-        }
-      } catch (e) {
-        // Si es un iframe externo, no se puede acceder por seguridad
-        console.warn('No se puede acceder al contenido del iframe externo para ajustar altura.');
+  function ajustarAlturaIframe(iframe) {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (doc) {
+        iframe.style.height = doc.body.scrollHeight + "px";
       }
+    } catch (e) {
+      console.warn("No se puede acceder al contenido del iframe (diferente dominio).");
     }
-    // Ajusta altura al cargar
-    iframe.addEventListener('load', ajustarAltura);
-    // Ajusta altura cada cierto tiempo (opcional, si el contenido cambia dinámicamente)
-    setInterval(ajustarAltura, 500);
+  }
+
+  // Selecciona todos los iframes con la clase .map-iframe
+  document.querySelectorAll(".map-iframe").forEach(iframe => {
+    iframe.addEventListener("load", () => ajustarAlturaIframe(iframe));
   });
 </script>
 
