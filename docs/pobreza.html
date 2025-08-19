@@ -59,22 +59,31 @@
   
 <!-- Script para ajustar altura del iframe y contenedor -->
 <script>
-  function ajustarAlturaIframe(iframe) {
-    try {
-      const doc = iframe.contentDocument || iframe.contentWindow.document;
-      if (doc) {
-        iframe.style.height = doc.body.scrollHeight + "px";
+  function ajustarIframes() {
+    const iframes = document.querySelectorAll(".map-iframe");
+
+    iframes.forEach(iframe => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDoc && iframeDoc.body) {
+          // Detecta la altura del contenido
+          const altura = iframeDoc.body.scrollHeight;
+          iframe.style.height = altura + "px";
+        }
+      } catch (e) {
+        console.warn("No se pudo ajustar un iframe (¿es externo?).");
       }
-    } catch (e) {
-      console.warn("No se puede acceder al contenido del iframe (diferente dominio).");
-    }
+    });
   }
 
-  // Selecciona todos los iframes con la clase .map-iframe
-  document.querySelectorAll(".map-iframe").forEach(iframe => {
-    iframe.addEventListener("load", () => ajustarAlturaIframe(iframe));
-  });
+  // Ajusta al cargar cada iframe
+  window.addEventListener("load", ajustarIframes);
+  window.addEventListener("resize", ajustarIframes);
+
+  // Si el contenido cambia dinámicamente dentro del iframe
+  setInterval(ajustarIframes, 800);
 </script>
+
   
   <!-- Pie de página -->
   <footer class="footer">
