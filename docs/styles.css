@@ -119,25 +119,20 @@ body {
   border: 1px solid #e2e2e2;
   margin-bottom: 2rem;
   padding: 0;
-  overflow: hidden;           /* Elimina barras de scroll */
-  height: auto;               /* ✅ Altura automática (ajustada por JS) */
-  min-height: 600px;          /* Mínimo para pantallas pequeñas */
-  max-height: none;           /* Sin límite máximo */
+  overflow: hidden;           /* Evita scroll */
+  min-height: 600px;          /* Mantiene altura mínima */
+  display: flex;              /* Contenedor flexible */
+  flex-direction: column;
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  contain: layout style;
 }
 
 /* 8. Iframe - Adaptación dinámica */
 .map-iframe {
   width: 100%;
-  height: 100%;               /* Ajustado por JS */
+  flex: 1;                    /* Ocupa todo el contenedor */
   border: none;
   display: block;
-  transform-origin: top center;
-  transform: scale(1);        /* Puedes reducir si el contenido es muy ancho */
-  transition: transform 0.1s ease-out;
-  overflow: hidden;
 }
 
 /* 9. Pie de visualización */
@@ -167,22 +162,12 @@ body {
   .visualization-box {
     min-height: 500px;
   }
-
-  .map-iframe {
-    transform: scale(0.97);   /* Ajuste visual para pantallas más pequeñas */
-    transform-origin: top center;
-  }
 }
 
 /* Pantallas pequeñas */
 @media (max-width: 480px) {
   .visualization-box {
     min-height: 450px;
-  }
-
-  .map-iframe {
-    transform: scale(0.92);   /* Ajuste mayor para móviles */
-    transform-origin: top center;
   }
 
   .viz-caption {
