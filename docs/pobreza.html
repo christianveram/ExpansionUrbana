@@ -59,71 +59,22 @@
   
 <!-- Script para ajustar altura del iframe y contenedor -->
 <script>
-  /**
-   * Ajusta la altura del iframe y su contenedor .visualization-box
-   * Espera a que el contenido interno esté completamente cargado
-   */
-  function ajustarAlturaIframes() {
-    const iframes = document.querySelectorAll('.map-iframe');
-
-    iframes.forEach((iframe) => {
-      // Función que mide y ajusta
-      const ajustar = () => {
-        try {
-          const doc = iframe.contentDocument || iframe.contentWindow.document;
-          const body = doc.body;
-          const html = doc.documentElement;
-
-          // Medir altura real (scrollHeight incluye contenido fuera de la vista)
-          const contentHeight = Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
-          );
-
-          // Añadir un pequeño margen por si hay bordes o sombras
-          const alturaFinal = contentHeight + 10;
-
-          // Ajustar iframe
-          iframe.style.height = alturaFinal + 'px';
-
-          // Ajustar contenedor
-          const box = iframe.closest('.visualization-box');
-          if (box) {
-            box.style.height = alturaFinal + 'px';
-          }
-
-          console.log('Ajustada altura del iframe:', alturaFinal + 'px');
-
-        } catch (e) {
-          console.warn('No se pudo acceder al iframe:', e);
-        }
-      };
-
-      // Escuchar cuando el iframe carga
-      iframe.onload = function () {
-        // Esperar 500ms para dar tiempo a que JS interno (gráficas) termine
-        setTimeout(ajustar, 500);
-      };
-
-      // Por si el iframe ya está en caché
-      if (iframe.contentDocument && iframe.contentDocument.body) {
-        setTimeout(ajustar, 500);
-      }
-    });
-  }
-
-  // Ejecutar cuando la página principal cargue
-  window.addEventListener('load', ajustarAlturaIframes);
-
-  // Opcional: vuelve a ajustar si cambia el tamaño de la ventana
-  window.addEventListener('resize', () => {
-    setTimeout(ajustarAlturaIframes, 300);
+  const iframe = document.getElementById("map-iframe");
+  // Ajustar la altura al cargar
+  iframe.onload = function() {
+    iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+  };
+  // Seleccionamos todos los iframes con clase "map-iframe"
+  const iframes = document.querySelectorAll(".map-iframe");
+  iframes.forEach(iframe => {
+    // Altura inicial visible mientras carga
+    iframe.style.height = "50vh";
+    // Ajusta altura al cargar
+    iframe.onload = function() {
+      iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + "px";
+    };
   });
 </script>
-
   
   <!-- Pie de página -->
   <footer class="footer">
