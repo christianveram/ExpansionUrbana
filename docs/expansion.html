@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tesis: Expansión Urbana y Pobreza</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Impacto de la Expansión Urbana en la Pobreza." />
+</head>
+<body>
+
+  <!-- Cabecera principal -->
+  <header class="header">
+    <h1>Expansión Urbana y Pobreza</h1>
+    <p>Análisis Geoespacial y Socioeconómico en Bogotá D.C. </p>
+  </header>
+
+  <!-- Navegación principal -->
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Inicio</a></li>
+      <li><a href="clasificacion.html" class="nav-link">Clasificación</a></li>
+      <li><a href="pobreza.html" class="nav-link">Pobreza</a></li>
+      <li><a href="expansion.html" class="nav-link active">Expansión Urbana</a></li>
+      <li><a href="otros.html" class="nav-link">Análisis Adicional</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+
+    <section class="intro-section">
+      <h2>Población en condición de pobreza 2014, 2017 y 2021</h2>
+    </section>
+
+    <!-- Iframe local: comparativo por UPZ y localidad -->
+    <div class="visualization-box">
+      <iframe 
+        class="map-iframe"
+        src="comparativo_pobreza_upz_localidad.html"
+        style="width:100%; border:none;">
+      </iframe>
+      <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
+    </div>
+
+    <!-- Iframe local: gráfica de barras -->
+    <div class="visualization-box">
+      <iframe 
+        class="map-iframe"
+        src="grafica_barras_pobreza.html"
+        style="width:100%; border:none;">
+      </iframe>
+      <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
+    </div>
+
+
+  </main>
+
+  
+<!-- Script para ajustar altura del iframe y contenedor -->
+<script>
+  function ajustarIframes() {
+    const iframes = document.querySelectorAll(".map-iframe");
+
+    iframes.forEach(iframe => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDoc && iframeDoc.body) {
+          // Detecta la altura del contenido
+          const altura = iframeDoc.body.scrollHeight;
+          iframe.style.height = altura + "px";
+        }
+      } catch (e) {
+        console.warn("No se pudo ajustar un iframe (¿es externo?).");
+      }
+    });
+  }
+
+  // Ajusta al cargar cada iframe
+  window.addEventListener("load", ajustarIframes);
+  window.addEventListener("resize", ajustarIframes);
+
+  // Si el contenido cambia dinámicamente dentro del iframe
+  setInterval(ajustarIframes, 800);
+</script>
+
+  
+  <!-- Pie de página -->
+  <footer class="footer">
+    <p>&copy; 2025 | Christian Vera, Julián Castiblanco y Andrew Arnedo</p>
+  </footer>
+
+</body>
+</html>
