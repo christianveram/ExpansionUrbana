@@ -131,6 +131,16 @@ body {
   display: block;
 }
 
+/* 8. Iframe - Adaptación dinámica */
+.map-iframe2 {
+  width: 100%;
+  border: none;
+  display: block;
+  height: 800px; 
+}
+
+
+
 /* 9. Pie de visualización */
 .viz-caption {
   font-size: 0.85rem;
