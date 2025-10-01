@@ -88,5 +88,39 @@
     <p>2025 | Christian Vera, Julián Castiblanco y Andrew Arnedo<br>
   </footer>
 
+<!-- Botón y cuadro de ayuda -->
+<div class="help-container">
+  <button id="help-btn" class="help-btn">?</button>
+  <div id="help-box" class="help-box">
+    <div class="help-header">
+      <span>ℹ️ Ayuda</span>
+      <button id="close-help" class="close-btn">&times;</button>
+    </div>
+    <p>
+      Aquí puedes leer una explicación o nota adicional sobre la visualización
+      o el proyecto.  
+      Por ejemplo: “Los datos provienen de Landsat y la Encuesta Multipropósito”.
+    </p>
+  </div>
+</div>
+
+
+<script>
+  const helpBtn = document.getElementById("help-btn");
+  const helpBox = document.getElementById("help-box");
+  const closeHelp = document.getElementById("close-help");
+
+  helpBtn.addEventListener("click", () => {
+    helpBox.style.display = "block";
+  });
+
+  closeHelp.addEventListener("click", () => {
+    helpBox.style.display = "none";
+  });
+</script>
+
+
+
+
 </body>
 </html>

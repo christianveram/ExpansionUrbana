@@ -23,33 +23,23 @@ body {
   background: #1c2a35;
   color: #fff;
   text-align: center;
-  padding: 0.4rem 1rem;   /* menos alto aún */
-  border-bottom: 2px solid #4a637d;
+  padding: 0.6rem 1rem;   /* menos alto que antes */
+  border-bottom: 2px solid #4a637d; /* más delgado */
 }
 
-/* Quitamos márgenes nativos de los títulos y párrafos dentro del header */
-.header h1,
-.header h2,
-.header p {
-  margin: 0;   /* elimina espacio vertical extra */
-  padding: 0;
-}
-
-.header h1, 
-.header h2 {
-  font-size: 1.3rem;   /* compacto */
-  font-weight: 600;
-  line-height: 1.3;    /* menos alto */
+.header h1 {
+  font-size: 1.4rem;      /* más pequeño */
+  margin-bottom: 0.2rem;  /* espacio reducido */
+  font-weight: 700;
 }
 
 .header p {
-  font-size: 0.8rem;
+  font-size: 0.8rem;      /* más compacto */
   opacity: 0.85;
   max-width: 500px;
-  margin: 0.2rem auto 0; /* dejamos un poquito debajo del título */
+  margin: 0.2rem auto 0;
   font-style: italic;
 }
-
 
 /* 4. Barra de navegación */
 .navbar {
@@ -222,4 +212,76 @@ body {
   display: block;
 }
 
+/* Boton de ayuda */
 
+/* Contenedor del botón */
+.help-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+/* Botón flotante con ? */
+.help-btn {
+  background: #1c2a35;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  transition: background 0.3s ease;
+}
+
+.help-btn:hover {
+  background: #4a637d;
+}
+
+/* Cuadro flotante de ayuda */
+.help-box {
+  display: none;
+  position: absolute;
+  bottom: 60px; /* se muestra arriba del botón */
+  right: 0;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Cabecera del cuadro */
+.help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #1c2a35;
+}
+
+/* Botón de cerrar dentro del cuadro */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

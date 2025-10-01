@@ -77,5 +77,42 @@
     <p> 2025 | Christian Vera, Julián Castiblanco y Andrew Arnedo</p>
   </footer>
 
+<!-- Botón y cuadro de ayuda -->
+<!-- Botón y cuadro de ayuda -->
+<div class="help-container">
+  <button id="help-btn" class="help-btn">?</button>
+  <div id="help-box" class="help-box">
+    <div class="help-header">
+      <span>ℹ️ Ayuda</span>
+      <button id="close-help" class="close-btn">&times;</button>
+    </div>
+    <p>
+      La visualización muestra las áreas de <strong>expansión urbana</strong> en Bogotá D.C. durante la última década.  
+      Considera lo siguiente:
+    </p>
+    <ul>
+      <li>Se resaltan las zonas que cambiaron de <strong>no urbano</strong> a <strong>urbano</strong>.</li>
+      <li>Al dar click sobre una <strong>UPZ</strong> se muestra su evolución.</li>
+    </ul>
+  </div>
+</div>
+
+
+<script>
+  const helpBtn = document.getElementById("help-btn");
+  const helpBox = document.getElementById("help-box");
+  const closeHelp = document.getElementById("close-help");
+
+  helpBtn.addEventListener("click", () => {
+    helpBox.style.display = "block";
+  });
+
+  closeHelp.addEventListener("click", () => {
+    helpBox.style.display = "none";
+  });
+</script>
+
+
+
 </body>
 </html>

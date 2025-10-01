@@ -84,5 +84,39 @@
     <p>&copy; 2025 | Christian Vera, Julián Castiblanco y Andrew Arnedo</p>
   </footer>
 
+
+<!-- Botón y cuadro de ayuda -->
+<div class="help-container">
+  <button id="help-btn" class="help-btn">?</button>
+  <div id="help-box" class="help-box">
+    <div class="help-header">
+      <span>ℹ️ Ayuda</span>
+      <button id="close-help" class="close-btn">&times;</button>
+    </div>
+    <p>Para navegar dentro del mapa de clasificación:</p>
+    <ul>
+      <li>Oprime la tecla <strong>Control</strong> para mover el mapa.</li>
+      <li>Usa la rueda del ratón para hacer zoom.</li>
+      <li>Haz clic en un área para ver información adicional.</li>
+    </ul>
+  </div>
+</div>
+
+
+<script>
+  const helpBtn = document.getElementById("help-btn");
+  const helpBox = document.getElementById("help-box");
+  const closeHelp = document.getElementById("close-help");
+
+  helpBtn.addEventListener("click", () => {
+    helpBox.style.display = "block";
+  });
+
+  closeHelp.addEventListener("click", () => {
+    helpBox.style.display = "none";
+  });
+</script>
+
+
 </body>
 </html>
