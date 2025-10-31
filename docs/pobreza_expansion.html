@@ -11,45 +11,39 @@
 
   <!-- Cabecera principal -->
   <header class="header">
-    <h1>Clasificación del suelo urbano.</h1>
+    <h1>Población en condición de pobreza 2014, 2017 y 2021</h1>
   </header>
 
   <!-- Navegación principal -->
   <nav class="navbar">
     <ul class="nav-list">
-      <!-- Enlaces a distintas secciones o páginas -->
       <li><a href="index.html" class="nav-link">Inicio</a></li>
-      <li><a href="clasificacion.html" class="nav-link active">Clasificación</a></li>
-      <li><a href="pobreza.html" class="nav-link">Pobreza</a></li>
+      <li><a href="clasificacion.html" class="nav-link">Clasificación</a></li>
+      <li><a href="pobreza.html" class="nav-link active">Pobreza</a></li>
       <li><a href="expansion.html" class="nav-link">Expansión Urbana</a></li>
-      <li><a href="pobreza_expansion.html" class="nav-link">Análisis Adicional</a></li>
+      <li><a href="otros.html" class="nav-link">Análisis Adicional</a></li>
     </ul>
   </nav>
 
   <!-- Contenido principal -->
   <main class="main-content">
 
-<div class="visualization-box-fixed">
-  <iframe class="map-iframe-fixed" 
-          src="https://ee-cveram.projects.earthengine.app/view/expansionurbanapobreza"
-          allowfullscreen>
-  </iframe>
-  <p class="viz-caption">Fuente: Google Earth Engine</p>
-</div>
 
-<div class="visualization-box">
-  <iframe 
-    class="map-iframe" 
-    src="clasificacion_barras.html">
-  </iframe>
-  <p class="viz-caption">Fuente: Elaboración propia</p>
-</div>
-
+    <!-- Iframe local: Poner Link -->
+    <div class="visualization-box">
+      <iframe 
+        class="map-iframe"
+        src=""
+        style="width:100%; border:none;">
+      </iframe>
+      <p class="viz-caption">Fuente: Elaboración propia con base en datos del DANE</p>
+    </div>
 
 
   </main>
 
   
+<!-- Script para ajustar altura del iframe y contenedor -->
 <script>
   function ajustarIframes() {
     const iframes = document.querySelectorAll(".map-iframe");
@@ -76,14 +70,11 @@
   setInterval(ajustarIframes, 800);
 </script>
 
-
   
-
   <!-- Pie de página -->
   <footer class="footer">
     <p>&copy; 2025 | Christian Vera, Julián Castiblanco y Andrew Arnedo</p>
   </footer>
-
 
 <!-- Botón y cuadro de ayuda -->
 <div class="help-container">
@@ -93,12 +84,10 @@
       <span>ℹ️ Ayuda</span>
       <button id="close-help" class="close-btn">&times;</button>
     </div>
-    <p>Para navegar dentro del mapa de clasificación:</p>
-    <ul>
-      <li>Oprime la tecla <strong>Control</strong> para mover el mapa.</li>
-      <li>Usa la rueda del ratón para hacer zoom.</li>
-      <li>Haz clic en un área para ver información adicional.</li>
-    </ul>
+    <p>
+PONER DESCRIPCION 
+
+    </p>
   </div>
 </div>
 
@@ -120,3 +109,4 @@
 
 </body>
 </html>
+
