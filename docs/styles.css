@@ -1,5 +1,218 @@
 /* 
-  Estilos elegantes para: Tesis - Expansión Urbana y Pobreza
+ Tesis - Expansión Urbana y Pobreza
+  Paleta: Azul petróleo (#1c2a35) + Azul acero (#4a637d)
+*/
+
+/* 1. Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Cuerpo */
+body {
+  font-family: 'Lato', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #2d2d2d;
+  background-color: #fafafa;
+}
+
+/* 3. Cabecera principal */
+.header {
+  background: #1c2a35;
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;   /* menos alto que antes */
+  border-bottom: 2px solid #4a637d; /* más delgado */
+}
+
+.header h1 {
+  font-size: 1.4rem;      /* más pequeño */
+  margin-bottom: 0.2rem;  /* espacio reducido */
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 0.8rem;      /* más compacto */
+  opacity: 0.85;
+  max-width: 500px;
+  margin: 0.2rem auto 0;
+  font-style: italic;
+}
+
+/* 4. Barra de navegación */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.6rem 0;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #1c2a35;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  background: #4a637d;
+  color: #fff;
+  border: 1px solid #4a637d;
+}
+
+.nav-link.active {
+  background: #4a637d;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #4a637d;
+}
+
+/* 5. Contenido principal */
+.main-content {
+  width: 85%;
+  margin: 2rem auto;
+  padding: 0 1.2rem;
+}
+
+/* 6. Sección de introducción */
+.intro-section {
+  background: #eef4f8;              /* Fondo suave */
+  padding: 2rem 2.5rem;
+  border-left: 6px solid #4a637d;
+  border-radius: 10px;
+  margin: 2rem auto 3rem auto;      /* Centrada con margen arriba/abajo */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  max-width: 900px;                 /* Limita el ancho */
+}
+
+.intro-section h2 {
+  font-size: 1.8rem;
+  color: #1c2a35;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.intro-section p {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.05rem;
+  text-align: justify;
+  line-height: 1.75;
+}
+
+
+
+/* 7. Caja de visualización - Altura dinámica automática */
+.visualization-box {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+  margin-bottom: 2rem;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 8. Iframe - Adaptación dinámica */
+.map-iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+/* 8. Iframe - Adaptación dinámica */
+.map-iframe2 {
+  width: 100%;
+  border: none;
+  display: block;
+  height: 800px; 
+}
+
+
+
+/* 9. Pie de visualización */
+.viz-caption {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  text-align: right;
+  margin: 0.5rem 1rem 1rem 0;
+}
+
+/* 10. Pie de página */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1c2a35;
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  border-top: 3px solid #4a637d;
+}
+
+/* 11. Responsive: Adaptación para móviles */
+
+/* Pantallas medianas */
+@media (max-width: 768px) {
+  .visualization-box {
+    min-height: 500px;
+  }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 480px) {
+  .visualization-box {
+    min-height: 450px;
+  }
+
+  .viz-caption {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+}
+
+
+
+/* Caja para Google Earth Engine */
+.visualization-box-fixed {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+  margin: 0 auto 2rem;     /* auto centra si hay límite de ancho */
+  padding: 0;
+  overflow: hidden;
+  width: 100%;             /* 100% del ancho disponible */
+  height: 800px;           /* altura fija */
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.map-iframe-fixed {
+  width: 100%;
+  height: 100%;   /* ocupa todo el alto definido en la caja */
+  border: none;
+  display: block;
+}
+
+/*  Tesis - Expansión Urbana y Pobreza
   Paleta: Azul petróleo (#1c2a35) + Azul acero (#4a637d)
 */
 
@@ -216,72 +429,99 @@ body {
 
 /* Contenedor del botón */
 .help-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
 }
 
 /* Botón flotante con ? */
 .help-btn {
-  background: #1c2a35;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-  transition: background 0.3s ease;
+    background: #1c2a35;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    transition: background 0.3s ease;
 }
 
 .help-btn:hover {
-  background: #4a637d;
+    background: #4a637d;
 }
 
 /* Cuadro flotante de ayuda */
 .help-box {
-  display: none;
-  position: absolute;
-  bottom: 60px; /* se muestra arriba del botón */
-  right: 0;
-  width: 280px;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #333;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  animation: fadeIn 0.3s ease;
+    display: none;
+    position: absolute;
+    bottom: 60px; /* se muestra arriba del botón */
+    right: 0;
+    width: 350px; 
+    max-height: 450px; 
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.2rem; 
+    font-size: 0.9rem;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto; 
 }
 
 /* Cabecera del cuadro */
 .help-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #1c2a35;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee; 
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700; 
+    color: #1c2a35;
+    font-size: 1rem;
 }
 
 /* Botón de cerrar dentro del cuadro */
 .close-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #666;
+    background: none;
+    border: none;
+    font-size: 1.5rem; 
+    cursor: pointer;
+    color: #666;
 }
 
 .close-btn:hover {
-  color: #000;
+    color: #000;
 }
+
+/* Estilos internos para el contenido del help-box (mejorará la visualización de listas) */
+.help-box ul {
+    list-style-type: none; 
+    padding-left: 0; 
+    margin-top: 5px;
+}
+
+.help-box ul li {
+    margin-bottom: 5px;
+}
+
+.help-box p {
+    margin-bottom: 8px;
+}
+
+.help-box hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 10px 0;
+}
+
 
 /* Animación */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(10px); }
+    to  { opacity: 1; transform: translateY(0); }
 }

@@ -77,13 +77,41 @@
   <button id="help-btn" class="help-btn">?</button>
   <div id="help-box" class="help-box">
     <div class="help-header">
-      <span>ℹ️ Ayuda</span>
+      <span>Interpretación de Mapas Espaciales</span>
       <button id="close-help" class="close-btn">&times;</button>
     </div>
-    <p>
-PONER DESCRIPCION 
 
+    <h3 style="margin-top: 5px; margin-bottom: 5px; font-size: 1.1em; font-weight: 700;">
+      Mapas LISA (Autocorrelación Local)
+    </h3>
+    <p style="font-size: 0.9em; margin-top: 5px;">
+      Este análisis identifica <strong>patrones de concentración</strong> (clústeres) o <strong>anomalías</strong> (valores atípicos) de la variable seleccionada en las UPZ.
     </p>
+    <ul style="padding-left: 20px; font-size: 0.9em;">
+      <li><span style="color: #4a1486; font-weight: bold;">High-High (HH):</span> Valor <strong>alto</strong> rodeado por vecinos <strong>altos</strong> (Fuerte concentración).</li>
+      <li><span style="color: #a6d96a; font-weight: bold;">Low-Low (LL):</span> Valor <strong>bajo</strong> rodeado por vecinos <strong>bajos</strong> (Fuerte concentración).</li>
+      <li><span style="color: #2c7bb6; font-weight: bold;">High-Low (HL):</span> <strong>Anomalía</strong> (Valor alto rodeado de bajos).</li>
+      <li><span style="color: #00a693; font-weight: bold;">Low-High (LH):</span> <strong>Anomalía</strong> (Valor bajo rodeado de altos).</li>
+      <li><span style="color: #feee73; font-weight: bold;">No Significativo:</span> No existe una correlación espacial clara con los vecinos.</li>
+    </ul>
+
+    <hr style="margin: 10px 0; border-top: 1px solid #ddd;">
+
+    <h3 style="margin-top: 5px; margin-bottom: 5px; font-size: 1.1em; font-weight: 700;">
+      Mapas GWR (Regresión Ponderada Geográficamente)
+    </h3>
+    <p style="font-size: 0.9em; margin-top: 5px;">
+      El modelo GWR muestra cómo la <strong>relación entre dos variables</strong> (por ejemplo, Urbanización y Pobreza) <strong>cambia</strong> en diferentes partes del territorio, en lugar de ser una relación constante para toda la ciudad. Los círculos de color representan la magnitud y dirección del efecto:
+    </p>
+    <ul style="padding-left: 20px; font-size: 0.9em;">
+      <li><span style="color: red; font-size: 1.2em;">●</span> <strong>Colores Rojos/Cálidos:</strong> El coeficiente es <strong>Positivo</strong>. Indica que, en esa zona, al aumentar el predictor (ej. Densidad), también aumenta la Pobreza.</li>
+      <li><span style="color: blue; font-size: 1.2em;">●</span> <strong>Colores Azules/Fríos:</strong> El coeficiente es <strong>Negativo</strong>. Indica que, en esa zona, al aumentar el predictor (ej. Urbanización), disminuye la Pobreza.</li>
+      <li><span style="color: #999; font-size: 1.2em;">●</span> <strong>Colores Claros/Grises (Cercanos a Cero):</strong> Indica que, en esa zona, el predictor tiene un efecto <strong>nulo o muy débil</strong> sobre la Pobreza.</li>
+    </ul>
+    <p style="font-size: 0.9em; font-style: italic; margin-top: 5px;">
+      *Cada punto en el mapa muestra el impacto único de esa variable en su ubicación específica (UPZ).*
+    </p>
+
   </div>
 </div>
 
