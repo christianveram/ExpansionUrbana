@@ -28,103 +28,128 @@
   <!-- Contenido principal -->
   <main class="main-content">
 
-    <!-- Selector de visualización -->
-    <div class="view-selector" style="text-align: center; margin: 1.5rem 0;">
-      <button id="btn-lisa" class="view-btn" style="padding: 8px 20px; margin: 0 5px; background: #4a637d; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">LISA</button>
-      <button id="btn-gwr" class="view-btn" style="padding: 8px 20px; margin: 0 5px; background: #1c2a35; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">GWR</button>
-    </div>
 
-    <!-- Contenedor con DOS iframes (precarga) -->
-    <div class="visualization-box-fixed">
-      <iframe id="lisa-frame" class="map-iframe-fixed" src="LISA_UPZ.html" allowfullscreen style="display: block;"></iframe>
-      <iframe id="gwr-frame"  class="map-iframe-fixed" src="GWR.html"  allowfullscreen style="display: none;"></iframe>
-    </div>
+<div class="visualization-box-fixed">
+  <iframe class="map-iframe-fixed" 
+          src="LISA_UPZ.html"
+          allowfullscreen>
+  </iframe>
+</div>
 
   </main>
 
+  <!-- Contenido principal -->
+  <main class="main-content">
+
+
+<div class="visualization-box-fixed">
+  <iframe class="map-iframe-fixed" 
+          src="GWR.html"
+          allowfullscreen>
+  </iframe>
+</div>
+
+  </main>
+
+
+  
+<!-- Script para ajustar altura del iframe y contenedor -->
+<script>
+  function ajustarIframes() {
+    const iframes = document.querySelectorAll(".map-iframe");
+
+    iframes.forEach(iframe => {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDoc && iframeDoc.body) {
+          // Detecta la altura del contenido
+          const altura = iframeDoc.body.scrollHeight;
+          iframe.style.height = altura + "px";
+        }
+      } catch (e) {
+        console.warn("No se pudo ajustar un iframe.");
+      }
+    });
+  }
+
+  // Ajusta al cargar cada iframe
+  window.addEventListener("load", ajustarIframes);
+  window.addEventListener("resize", ajustarIframes);
+
+  // Si el contenido cambia dinámicamente dentro del iframe
+  setInterval(ajustarIframes, 800);
+</script>
+
+  
   <!-- Pie de página -->
   <footer class="footer">
     <p>&copy; 2025 | Christian Vera, Julián Castiblanco y Andrew Arnedo</p>
   </footer>
 
-  <!-- Botón y cuadro de ayuda -->
-  <div class="help-container">
-    <button id="help-btn" class="help-btn">?</button>
-    <div id="help-box" class="help-box">
-      <div class="help-header">
-        <span>Interpretación de Mapas Espaciales</span>
-        <button id="close-help" class="close-btn">&times;</button>
-      </div>
-
-      <h3 style="margin-top: 5px; margin-bottom: 5px; font-size: 1.1em; font-weight: 700;">
-        Mapas LISA (Autocorrelación Local)
-      </h3>
-      <p style="font-size: 0.9em; margin-top: 5px;">
-        Este análisis identifica <strong>patrones de concentración</strong> (clústeres) o <strong>anomalías</strong> (valores atípicos) de la variable seleccionada en las UPZ.
-      </p>
-      <ul style="padding-left: 20px; font-size: 0.9em;">
-        <li><span style="color: #4a1486; font-weight: bold;">High-High (HH):</span> Valor <strong>alto</strong> rodeado por vecinos <strong>altos</strong> (Fuerte concentración).</li>
-        <li><span style="color: #a6d96a; font-weight: bold;">Low-Low (LL):</span> Valor <strong>bajo</strong> rodeado por vecinos <strong>bajos</strong> (Fuerte concentración).</li>
-        <li><span style="color: #2c7bb6; font-weight: bold;">High-Low (HL):</span> <strong>Anomalía</strong> (Valor alto rodeado de bajos).</li>
-        <li><span style="color: #00a693; font-weight: bold;">Low-High (LH):</span> <strong>Anomalía</strong> (Valor bajo rodeado de altos).</li>
-        <li><span style="color: #feee73; font-weight: bold;">No Significativo:</span> No existe una correlación espacial clara con los vecinos.</li>
-      </ul>
-
-      <hr style="margin: 10px 0; border-top: 1px solid #ddd;">
-
-      <h3 style="margin-top: 5px; margin-bottom: 5px; font-size: 1.1em; font-weight: 700;">
-        Mapas GWR (Regresión Ponderada Geográficamente)
-      </h3>
-      <p style="font-size: 0.9em; margin-top: 5px;">
-        El modelo GWR muestra cómo la <strong>relación entre dos variables</strong> (por ejemplo, Urbanización y Pobreza) <strong>cambia</strong> en diferentes partes del territorio, en lugar de ser una relación constante para toda la ciudad. Los círculos de color representan la magnitud y dirección del efecto:
-      </p>
-      <ul style="padding-left: 20px; font-size: 0.9em;">
-        <li><span style="color: red; font-size: 1.2em;">●</span> <strong>Colores Rojos/Cálidos:</strong> El coeficiente es <strong>Positivo</strong>. Indica que, en esa zona, al aumentar el predictor (ej. Densidad), también aumenta la Pobreza.</li>
-        <li><span style="color: blue; font-size: 1.2em;">●</span> <strong>Colores Azules/Fríos:</strong> El coeficiente es <strong>Negativo</strong>. Indica que, en esa zona, al aumentar el predictor (ej. Urbanización), disminuye la Pobreza.</li>
-        <li><span style="color: #999; font-size: 1.2em;">●</span> <strong>Colores Claros/Grises (Cercanos a Cero):</strong> Indica que, en esa zona, el predictor tiene un efecto <strong>nulo o muy débil</strong> sobre la Pobreza.</li>
-      </ul>
-      <p style="font-size: 0.9em; font-style: italic; margin-top: 5px;">
-        *Cada punto en el mapa muestra el impacto único de esa variable en su ubicación específica (UPZ).*
-      </p>
+<!-- Botón y cuadro de ayuda -->
+<div class="help-container">
+  <button id="help-btn" class="help-btn">?</button>
+  <div id="help-box" class="help-box">
+    <div class="help-header">
+      <span>Interpretación de Mapas Espaciales</span>
+      <button id="close-help" class="close-btn">&times;</button>
     </div>
+
+    <h3 style="margin-top: 5px; margin-bottom: 5px; font-size: 1.1em; font-weight: 700;">
+      Mapas LISA (Autocorrelación Local)
+    </h3>
+    <p style="font-size: 0.9em; margin-top: 5px;">
+      Este análisis identifica <strong>patrones de concentración</strong> (clústeres) o <strong>anomalías</strong> (valores atípicos) de la variable seleccionada en las UPZ.
+    </p>
+    <ul style="padding-left: 20px; font-size: 0.9em;">
+      <li><span style="color: #4a1486; font-weight: bold;">High-High (HH):</span> Valor <strong>alto</strong> rodeado por vecinos <strong>altos</strong> (Fuerte concentración).</li>
+      <li><span style="color: #a6d96a; font-weight: bold;">Low-Low (LL):</span> Valor <strong>bajo</strong> rodeado por vecinos <strong>bajos</strong> (Fuerte concentración).</li>
+      <li><span style="color: #2c7bb6; font-weight: bold;">High-Low (HL):</span> <strong>Anomalía</strong> (Valor alto rodeado de bajos).</li>
+      <li><span style="color: #00a693; font-weight: bold;">Low-High (LH):</span> <strong>Anomalía</strong> (Valor bajo rodeado de altos).</li>
+      <li><span style="color: #feee73; font-weight: bold;">No Significativo:</span> No existe una correlación espacial clara con los vecinos.</li>
+    </ul>
+
+    <hr style="margin: 10px 0; border-top: 1px solid #ddd;">
+
+    <h3 style="margin-top: 5px; margin-bottom: 5px; font-size: 1.1em; font-weight: 700;">
+      Mapas GWR (Regresión Ponderada Geográficamente)
+    </h3>
+    <p style="font-size: 0.9em; margin-top: 5px;">
+      El modelo GWR muestra cómo la <strong>relación entre dos variables</strong> (por ejemplo, Urbanización y Pobreza) <strong>cambia</strong> en diferentes partes del territorio, en lugar de ser una relación constante para toda la ciudad. Los círculos de color representan la magnitud y dirección del efecto:
+    </p>
+    <ul style="padding-left: 20px; font-size: 0.9em;">
+      <li><span style="color: red; font-size: 1.2em;">●</span> <strong>Colores Rojos/Cálidos:</strong> El coeficiente es <strong>Positivo</strong>. Indica que, en esa zona, al aumentar el predictor (ej. Densidad), también aumenta la Pobreza.</li>
+      <li><span style="color: blue; font-size: 1.2em;">●</span> <strong>Colores Azules/Fríos:</strong> El coeficiente es <strong>Negativo</strong>. Indica que, en esa zona, al aumentar el predictor (ej. Urbanización), disminuye la Pobreza.</li>
+      <li><span style="color: #999; font-size: 1.2em;">●</span> <strong>Colores Claros/Grises (Cercanos a Cero):</strong> Indica que, en esa zona, el predictor tiene un efecto <strong>nulo o muy débil</strong> sobre la Pobreza.</li>
+    </ul>
+    <p style="font-size: 0.9em; font-style: italic; margin-top: 5px;">
+      *Cada punto en el mapa muestra el impacto único de esa variable en su ubicación específica (UPZ).*
+    </p>
+
   </div>
+  
+</div>
 
-  <!-- Scripts -->
-  <script>
-    // Alternar visualizaciones (instantáneo)
-    const btnLisa = document.getElementById('btn-lisa');
-    const btnGwr = document.getElementById('btn-gwr');
-    const lisaFrame = document.getElementById('lisa-frame');
-    const gwrFrame = document.getElementById('gwr-frame');
 
-    function show(targetFrame, otherFrame, activeBtn, inactiveBtn) {
-      targetFrame.style.display = 'block';
-      otherFrame.style.display = 'none';
-      activeBtn.style.background = '#4a637d';
-      inactiveBtn.style.background = '#1c2a35';
-    }
 
-    btnLisa.addEventListener('click', () => {
-      show(lisaFrame, gwrFrame, btnLisa, btnGwr);
-    });
 
-    btnGwr.addEventListener('click', () => {
-      show(gwrFrame, lisaFrame, btnGwr, btnLisa);
-    });
 
-    // Ayuda flotante
-    const helpBtn = document.getElementById("help-btn");
-    const helpBox = document.getElementById("help-box");
-    const closeHelp = document.getElementById("close-help");
 
-    helpBtn.addEventListener("click", () => {
-      helpBox.style.display = "block";
-    });
 
-    closeHelp.addEventListener("click", () => {
-      helpBox.style.display = "none";
-    });
-  </script>
+<script>
+  const helpBtn = document.getElementById("help-btn");
+  const helpBox = document.getElementById("help-box");
+  const closeHelp = document.getElementById("close-help");
+
+  helpBtn.addEventListener("click", () => {
+    helpBox.style.display = "block";
+  });
+
+  closeHelp.addEventListener("click", () => {
+    helpBox.style.display = "none";
+  });
+</script>
+
 
 </body>
 </html>
